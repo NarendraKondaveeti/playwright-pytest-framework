@@ -29,3 +29,4 @@ steps:
   displayName: Run Playwright Tests
   env:
     HEADLESS: "true"
+    BASE_URL: "https://the-internet.herokuapp.com/"
