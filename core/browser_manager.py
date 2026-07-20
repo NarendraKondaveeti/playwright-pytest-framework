@@ -1,7 +1,6 @@
 from playwright.sync_api import sync_playwright
 from config.settings import Settings
 
-
 class BrowserManager:
 
     @staticmethod
