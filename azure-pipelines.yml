@@ -25,5 +25,7 @@ steps:
   displayName: 'Install Playwright Browsers'
 
 - script: |
-    pytest
+    python --version
+    python -m pip freeze
+    pytest -vv -s --full-trace
   displayName: 'Run Playwright Tests'
