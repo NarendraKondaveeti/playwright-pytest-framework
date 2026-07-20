@@ -25,8 +25,25 @@ steps:
   displayName: 'Install Playwright Browsers'
 
 - script: |
-    pytest
+    mkdir -p reports
+    pytest \
+      --junitxml=reports/results.xml \
+      --html=reports/report.html \
+      --self-contained-html
   displayName: Run Playwright Tests
   env:
     HEADLESS: "true"
     BASE_URL: "https://the-internet.herokuapp.com/"
+
+- task: PublishTestResults@2
+  displayName: Publish Test Results
+  inputs:
+    testResultsFormat: JUnit
+    testResultsFiles: 'reports/results.xml'
+    failTaskOnFailedTests: true
+
+- task: PublishPipelineArtifact@1
+  displayName: Publish HTML Report
+  inputs:
+    targetPath: 'reports'
+    artifact: 'TestReports'    
