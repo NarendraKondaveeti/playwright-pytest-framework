@@ -47,3 +47,12 @@ steps:
   inputs:
     targetPath: 'reports'
     artifact: 'TestReports'    
+
+- script: |
+    python email/send_email.py
+  displayName: "Send Automation Email"
+  condition: always()
+  env:
+    EMAIL_SENDER: $(EMAIL_SENDER)
+    EMAIL_PASSWORD: $(EMAIL_PASSWORD)
+    EMAIL_RECEIVERS: $(EMAIL_RECEIVERS)
