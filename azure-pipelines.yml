@@ -3,6 +3,17 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+parameters:
+- name: browser
+  displayName: "Select Browser"
+  type: string
+  default: chromium
+  values:
+    - chromium
+    - firefox
+    - webkit
+
+
 trigger:
   - main
 
@@ -32,6 +43,7 @@ steps:
       --self-contained-html
   displayName: Run Playwright Tests
   env:
+    BROWSER: ${{ parameters.browser }}
     HEADLESS: "true"
     BASE_URL: "https://the-internet.herokuapp.com/"
 
