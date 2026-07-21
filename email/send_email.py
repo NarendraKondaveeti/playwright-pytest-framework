@@ -56,12 +56,24 @@ except FileNotFoundError:
     print("❌ HTML Report not found!")
     exit()
 
+# Send Emaila
 # Send Email
 try:
 
     with smtplib.SMTP("smtp.gmail.com", 587) as server:
 
         server.starttls()
+
+        print("======================================")
+        print(f"Sender          : {EMAIL_SENDER}")
+
+        if EMAIL_PASSWORD:
+            print(f"Password Length : {len(EMAIL_PASSWORD)}")
+        else:
+            print("Password is EMPTY")
+
+        print(f"Receivers       : {EMAIL_RECEIVERS}")
+        print("======================================")
 
         server.login(
             EMAIL_SENDER,
