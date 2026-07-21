@@ -13,14 +13,6 @@ parameters:
     - firefox
     - webkit
 
-schedules:
-- cron: "30 16 * * *"
-  displayName: "Daily Regression Run"
-  branches:
-    include:
-      - main
-  always: true
-
 trigger:
   - main
 
