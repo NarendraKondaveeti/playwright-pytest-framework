@@ -1,7 +1,7 @@
 import pytest
 from core.browser_manager import BrowserManager
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope="session")
 def page():
 
     playwright, browser = BrowserManager.launch_browser()

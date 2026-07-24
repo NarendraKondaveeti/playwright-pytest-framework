@@ -4,7 +4,7 @@ from config.settings import Settings
 class BrowserManager:
 
     @staticmethod
-    def launch_browser():
+    def launch_browser(http_credentials=None):
         playwright = sync_playwright().start()
 
         if Settings.BROWSER == "chromium": # అంటే browser nameని functionకి పంపడం లేదు.Function directగా Settings.BROWSER చదువుతోంది.
