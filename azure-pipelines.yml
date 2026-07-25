@@ -46,10 +46,6 @@ steps:
   displayName: 'Install Playwright Browsers'
 
 - script: |
-    pytest -m ${{ parameters.testSuite }}
-  displayName: Run Tests
-
-- script: |
     mkdir -p reports
 
     if [ "${{ parameters.testSuite }}" = "all" ]; then
@@ -64,14 +60,7 @@ steps:
         --html=reports/report.html \
         --self-contained-html
     fi
-
-- script: |
-    echo "===== DEBUG ====="
-    printenv | grep BASE_URL
-    printenv | grep BROWSER
-    printenv | grep HEADLESS
-    echo "================="
-  displayName: Debug Environment
+  displayName: Run Playwright Tests
   env:
     BASE_URL: "https://the-internet.herokuapp.com/"
     BROWSER: ${{ parameters.browser }}
