@@ -66,8 +66,11 @@ steps:
     fi
 
 - script: |
+    echo "===== DEBUG ====="
     echo "BASE_URL=$BASE_URL"
-    env | sort
+    echo "BROWSER=$BROWSER"
+    echo "HEADLESS=$HEADLESS"
+    echo "================="
   displayName: Debug Environment
   env:
     BROWSER: ${{ parameters.browser }}
