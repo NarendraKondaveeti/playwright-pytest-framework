@@ -1,5 +1,8 @@
+
+import pytest
 from pages.sortable_data_tables_page import SortableDataTablesPage
 
+@pytest.mark.smoke
 def test_sortable_data_tables(page):
 
     tables = SortableDataTablesPage(page)

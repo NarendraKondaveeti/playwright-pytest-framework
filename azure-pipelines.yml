@@ -13,6 +13,18 @@ parameters:
     - firefox
     - webkit
 
+- name: testSuite
+  type: string
+  default: smoke
+  values:
+    - smoke
+    - regression
+    - sanity
+
+- script: |
+    pytest -m ${{ parameters.testSuite }}
+  displayName: Execute Tests
+
 trigger:
   - main
 
