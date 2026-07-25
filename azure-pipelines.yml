@@ -60,6 +60,10 @@ steps:
     HEADLESS: "true"
     BASE_URL: "https://the-internet.herokuapp.com/"
 
+- script: |
+    echo "BASE_URL=$BASE_URL"
+    echo "BROWSER=$BROWSER"
+
 - task: PublishTestResults@2
   displayName: Publish Test Results
   inputs:
