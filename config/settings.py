@@ -3,11 +3,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-print("=" * 50)
-print("BASE_URL =", os.getenv("BASE_URL"))
-print("BROWSER  =", os.getenv("BROWSER"))
-print("HEADLESS =", os.getenv("HEADLESS"))
-print("=" * 50)
 
 class Settings:
     BROWSER = os.getenv("BROWSER", "chromium")
