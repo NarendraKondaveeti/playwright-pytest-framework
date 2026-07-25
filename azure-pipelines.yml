@@ -15,8 +15,9 @@ parameters:
 
 - name: testSuite
   type: string
-  default: smoke
+  default: all
   values:
+    - all
     - smoke
     - regression
     - sanity
@@ -50,12 +51,19 @@ steps:
 
 - script: |
     mkdir -p reports
-    pytest \
-      -m ${{ parameters.testSuite }} \
-      --junitxml=reports/results.xml \
-      --html=reports/report.html \
-      --self-contained-html
-  displayName: Run Playwright Tests
+
+    if [ "${{ parameters.testSuite }}" = "all" ]; then
+      pytest \
+        --junitxml=reports/results.xml \
+        --html=reports/report.html \
+        --self-contained-html
+    else
+      pytest \
+        -m ${{ parameters.testSuite }} \
+        --junitxml=reports/results.xml \
+        --html=reports/report.html \
+        --self-contained-html
+    fi
 
   env:
     BROWSER: ${{ parameters.browser }}
