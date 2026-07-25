@@ -51,10 +51,12 @@ steps:
 - script: |
     mkdir -p reports
     pytest \
+      -m ${{ parameters.testSuite }} \
       --junitxml=reports/results.xml \
       --html=reports/report.html \
       --self-contained-html
   displayName: Run Playwright Tests
+
   env:
     BROWSER: ${{ parameters.browser }}
     HEADLESS: "true"
