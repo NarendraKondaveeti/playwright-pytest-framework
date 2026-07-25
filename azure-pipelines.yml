@@ -67,15 +67,15 @@ steps:
 
 - script: |
     echo "===== DEBUG ====="
-    echo "BASE_URL=$BASE_URL"
-    echo "BROWSER=$BROWSER"
-    echo "HEADLESS=$HEADLESS"
+    printenv | grep BASE_URL
+    printenv | grep BROWSER
+    printenv | grep HEADLESS
     echo "================="
   displayName: Debug Environment
   env:
+    BASE_URL: "https://the-internet.herokuapp.com/"
     BROWSER: ${{ parameters.browser }}
     HEADLESS: "true"
-    BASE_URL: "https://the-internet.herokuapp.com/"
 
 - task: PublishTestResults@2
   displayName: Publish Test Results
