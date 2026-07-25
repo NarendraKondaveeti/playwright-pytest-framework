@@ -21,10 +21,6 @@ parameters:
     - regression
     - sanity
 
-- script: |
-    pytest -m ${{ parameters.testSuite }}
-  displayName: Execute Tests
-
 trigger:
   - main
 
@@ -47,6 +43,10 @@ steps:
 - script: |
     python -m playwright install --with-deps
   displayName: 'Install Playwright Browsers'
+
+- script: |
+    pytest -m ${{ parameters.testSuite }}
+  displayName: Run Tests
 
 - script: |
     mkdir -p reports
