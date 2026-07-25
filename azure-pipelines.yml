@@ -65,14 +65,14 @@ steps:
         --self-contained-html
     fi
 
+- script: |
+    echo "BASE_URL=$BASE_URL"
+    env | sort
+  displayName: Debug Environment
   env:
     BROWSER: ${{ parameters.browser }}
     HEADLESS: "true"
     BASE_URL: "https://the-internet.herokuapp.com/"
-
-- script: |
-    echo "BASE_URL=$BASE_URL"
-    echo "BROWSER=$BROWSER"
 
 - task: PublishTestResults@2
   displayName: Publish Test Results
