@@ -76,8 +76,8 @@ steps:
 - task: PublishPipelineArtifact@1
   displayName: Publish HTML Report
   inputs:
-    targetPath: 'reports'
-    artifact: 'TestReports'    
+    targetPath: 'artifacts'
+    artifact: 'TestArtifacts'    
 
 - script: |
     python email/send_email.py

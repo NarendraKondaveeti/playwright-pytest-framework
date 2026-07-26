@@ -3,7 +3,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
 class Settings:
     BROWSER = os.getenv("BROWSER", "chromium")
     HEADLESS = os.getenv("HEADLESS", "true").lower() == "true"
