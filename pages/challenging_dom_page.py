@@ -1,7 +1,6 @@
 from playwright.sync_api import Page
 from config.settings import Settings
 
-
 class ChallengingDomPage:
 
     def __init__(self, page: Page):
